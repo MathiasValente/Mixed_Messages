@@ -1,9 +1,9 @@
 class RandomPhrases {
 
     constructor() {
-        this._pronoun = ['I'];
-        this._verb = ['am'];
-        this._adjective = ['good'];
+        this._characters = ['Aragorn', 'Gandalf', 'Frodo', 'Bilbo', 'Sam', 'Pippin', 'Merry'];
+        this._actions = ['ventured into', 'escaped from', 'fought bravely in', 'discovered ancient ruins within','was ambushed at', 'rode swiftly across', 'uncovered a hidden artifact in'];
+        this._locations = ['Anduin River', 'Dead Marshes', 'Pelennor Fields', 'Mirkwood', 'Fangorn Forest'];
     }
 
     static _validateArray(array, type) {
@@ -35,58 +35,58 @@ class RandomPhrases {
         return Math.floor(Math.random() * array.length);
     }
 
-    get pronoun() {
+    get characters() {
         try {
-            RandomPhrases._validateArray(this._pronoun, 'pronoun');
-            return this._pronoun;
+            RandomPhrases._validateArray(this._characters, 'characters');
+            return this._characters;
         } catch (e) {
             console.error(e.message);
             return [];
         }
     }
 
-    get verb() {
+    get actions() {
         try {
-            RandomPhrases._validateArray(this._verb, 'verb');
-            return this._verb;
+            RandomPhrases._validateArray(this._actions, 'actions');
+            return this._actions;
         } catch (e) {
             console.error(e.message);
             return [];
         }
     }
 
-    get adjective() {
+    get locations() {
         try {
-            RandomPhrases._validateArray(this._adjective, 'adjective');
-            return this._adjective;
+            RandomPhrases._validateArray(this._locations, 'locations');
+            return this._locations;
         } catch (e) {
             console.error(e.message);
             return [];
         }
     }
 
-    set pronoun(array) {
+    set characters(array) {
         try {
-            this._pronoun = RandomPhrases._validateArray(array, 'pronoun');
-            RandomPhrases._setterSuccess('pronoun');
+            this._characters = RandomPhrases._validateArray(array, 'characters');
+            RandomPhrases._setterSuccess('characters');
         } catch(e) {
             console.error(e.message);
         }
     }
 
-    set verb(array) {
+    set actions(array) {
         try {
-            this._verb = RandomPhrases._validateArray(array, 'verb');
-            RandomPhrases._setterSuccess('verb');
+            this._actions = RandomPhrases._validateArray(array, 'actions');
+            RandomPhrases._setterSuccess('actions');
         } catch(e) {
             console.error(e.message);
         }
     }
 
-    set adjective(array) {
+    set locations(array) {
         try {
-            this._adjective = RandomPhrases._validateArray(array, 'adjective');
-            RandomPhrases._setterSuccess('adjective');
+            this._locations = RandomPhrases._validateArray(array, 'locations');
+            RandomPhrases._setterSuccess('locations');
         } catch(e) {
             console.error(e.message);
         }
@@ -95,15 +95,15 @@ class RandomPhrases {
     randomPhrase() {
         try {
 
-            if (this.pronoun.length === 0 || this.verb.length === 0 || this.adjective.length === 0) {
+            if (this.characters.length === 0 || this.actions.length === 0 || this.locations.length === 0) {
                 throw new Error('Phrase cannot be generated: One or more arrays are empty due to invalid setting.')
             }
 
-            const randomPronounIndex = RandomPhrases._randomIndex(this.pronoun);
-            const randomVerbIndex = RandomPhrases._randomIndex(this.verb);
-            const randomAdjectiveIndex = RandomPhrases._randomIndex(this.adjective);
+            const randomcharactersIndex = RandomPhrases._randomIndex(this.characters);
+            const randomactionsIndex = RandomPhrases._randomIndex(this.actions);
+            const randomlocationsIndex = RandomPhrases._randomIndex(this.locations);
 
-            return `${this.pronoun[randomPronounIndex]} ${this.verb[randomVerbIndex]} ${this.adjective[randomAdjectiveIndex]}`
+            return `${this.characters[randomcharactersIndex]} ${this.actions[randomactionsIndex]} ${this.locations[randomlocationsIndex]}`
         } catch(e) {
             console.error(e.message);
         }       
